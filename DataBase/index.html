@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload and Dot Placement</title>
+</head>
+<body>
+    <h1>Image Upload and Dot Placement</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <label for="x">X Coordinate:</label>
+        <input type="text" name="x" required>
+        <label for="y">Y Coordinate:</label>
+        <input type="text" name="y" required>
+        <input type="submit" value="Upload and Place Dot">
+    </form>
+</body>
+</html>
