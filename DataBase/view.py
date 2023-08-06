@@ -7,7 +7,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 
 
 def place_dot(image_path, x, y):
-    image = Image.open(image_path)
+    image = Image.open("C:\Users\SKH\Desktop\Database\DataBase\HanaSquare.png")
     draw = ImageDraw.Draw(image)
     dot_radius = 5  # Adjust the size of the dot as needed
     dot_color = (255, 0, 0)  # Red color for the dot (adjust RGB values as needed)
