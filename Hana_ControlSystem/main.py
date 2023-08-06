@@ -8,13 +8,15 @@ import random
 app = Flask(__name__)
 CORS(app)  # 모든 라우트에 대해 CORS를 허용합니다
 
-# MySQL database connection configuration
+
+# MySQL database 연결 설정 및 권한 확인
 connection = mysql.connector.connect(
     host='163.152.52.120',
-    user='min',
+    user='bada',
     password='qkekdla00^^',
     database='SuwonStationMap'
 )
+
 
 # json으로 다시 바꿀 때 \가 들어가서 제거해주는 함수
 def clean_json(json_str):
@@ -22,12 +24,16 @@ def clean_json(json_str):
     cleaned_str = json_str.replace("\\", "")
     return cleaned_str
 
+
+# 관제 뷰 띄우기
 @app.route('/')
-def html():
+def renderHtml():
     return render_template(r'HanaSquare_B1.html')
 
+
+# suwonstationmap DB의 map_info 테이블 데이터 조회 및 반환
 @app.route('/map')
-def mapindex():
+def slelctMap():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.map_info"
@@ -44,16 +50,15 @@ def mapindex():
         return "Error occurred", 500, {'Content-Type': 'text/plain'}
 
 
-# suwonstationmap.roomarea_info 테이블의 'map_data_json' 속성 출력
+# suwonstationmap DB의 roomarea_info 테이블 데이터 조회 및 반환
 @app.route('/room')
-def roomindex():
+def slelctRoom():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.roomarea_info"
         cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
-
         # Serialize the data using json.dumps()
         serialized_data = json.dumps(data)
 
@@ -63,16 +68,15 @@ def roomindex():
         return "Error occurred", 500, {'Content-Type': 'text/plain'}
 
 
-# suwonstationmap.floor_info 테이블의 'map_data_json' 속성 출력
+# suwonstationmap DB의 floor_info 테이블 데이터 조회 및 반환
 @app.route('/floor')
-def floorindex():
+def slelctFloor():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.floor_info"
         cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
-
         # Serialize the data using json.dumps()
         serialized_data = json.dumps(data)
 
@@ -81,16 +85,17 @@ def floorindex():
         print("error:", e)
         return "Error occurred", 500, {'Content-Type': 'text/plain'}
 
-# suwonstationmap.background_info 테이블의 'map_data_json' 속성 출력
+
+
+# suwonstationmap DB의 background_info 테이블 데이터 조회 및 반환
 @app.route('/back')
-def index():
+def slelctBack():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.background_info"
         cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
-
         # Serialize the data using json.dumps()
         serialized_data = json.dumps(data)
 
@@ -100,8 +105,7 @@ def index():
         return "Error occurred", 500, {'Content-Type': 'text/plain'}
 
 
-
-# suwonstationmap.Current_user 테이블에 사용자 추가
+# suwonstationmap DB의 Current_user 테이블 데이터 추가
 @app.route('/insertUser')
 def insertUser():
     try:
@@ -115,7 +119,6 @@ def insertUser():
                 str(float(random.randint(1, 320)))
             )
             cursor.execute(insert_query, values)
-
         connection.commit()  # 데이터베이스에 변경 내용을 반영합니다
 
         return "Data inserted successfully", 200, {'Content-Type': 'application/json'}
@@ -123,7 +126,8 @@ def insertUser():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# suwonstationmap.Current_user 테이블에 사용자 추가
+
+# suwonstationmap DB의 Current_user 테이블 데이터 수정
 @app.route('/alertUser')
 def alertUser():
     try:
@@ -158,6 +162,8 @@ def alertUser():
         return jsonify({"error": str(e)}), 500
 
 
+# suwonstationmap DB의 Current_user 테이블 데이터를 이용해서
+# 1.맵 영역 분리, 2.영역 별로 위치한 사용자 수 분석 3.정원에 비교하여 혼잡도 계산
 @app.route('/analy')
 def analy():
     X_MAX = 1000
@@ -224,6 +230,7 @@ def analy():
     }
     # Use json.dumps with indent parameter for line breaks
     return json.dumps(output1, indent=2)
+
 
 if __name__ == '__main__':
     # app.run(debug=True)
