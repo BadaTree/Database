@@ -1,34 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Receive JSON Data from API</title>
+</head>
 <body>
-    <h1>Fetching Data from Server</h1>
-    <div id="dataContainer"></div>
-    <script>
-      async function fetchData(url) {
-        const response = await fetch(url);
-        return response.json();
-      }
-  
-      async function fetchMultipleData() {
-        const urls = [
-          'http://163.152.52.199:5000/map',
-          'http://163.152.52.199:5000/floor',
+  <div id="data-display"></div>
 
-          // Add more URLs as needed
-        ];
-  
-        try {
-          const promises = urls.map(url => fetchData(url));
-          const results = await Promise.all(promises);
-          
-          const dataContainer = document.getElementById('dataContainer');
-          const formattedResults = results.map(data => JSON.stringify(data, null, 2)).join('<br/><br/>');
-          dataContainer.innerHTML = formattedResults;
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      }
-  
-      // Fetch and display data as soon as the page loads
-      fetchMultipleData();
-    </script>
-  </body>
-  
+  <script>
+    // Make a GET request to the API endpoint
+    fetch('http://163.152.52.199:5000/analy')
+      .then(response => response.json())
+      .then(data => {
+        // Data is the parsed JSON object received from the API
+        displayData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+    // Function to display the received data on the webpage
+    function displayData(data) {
+      // Access the area1_count array from the JSON data
+      const area1CountArray = data.area1_count;
+
+      // Display the data in the "data-display" div element
+      const dataDisplayDiv = document.getElementById('data-display');
+      dataDisplayDiv.innerHTML = '<h2>Received JSON Data:</h2>' + JSON.stringify(area1CountArray);
+    }
+  </script>
+</body>
+</html>
