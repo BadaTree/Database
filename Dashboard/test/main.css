@@ -1,0 +1,50 @@
+/*css*/
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=DynaPuff:wght@500&family=Nanum+Myeongjo&family=Rubik+Dirt&family=Silkscreen&display=swap');
+
+.main-background{
+  background-color: #000000 ;
+}
+
+.h4{
+  font-family: 'Dosis', sans-serif;
+}
+
+.f-25
+{
+  font-family: 'Rubik Dirt', cursive;
+  font-size:25px;
+}
+
+.f-16{
+  font-size:16px;
+  font-family: 'Dosis', sans-serif;
+  color: #6fbaf8;
+
+}
+
+.f-14{
+  font-family: 'Dosis', sans-serif;
+  font-size:14px;
+}
+
+.f-12{
+  font-family: 'Dosis', sans-serif;
+  font-size:12px;
+}
+
+.text-1{
+  margin-top: 10px;
+  float:left;
+  margin-right:50px;
+  margin-left:50px;
+  margin-bottom:10px;
+}
+
+.card-body i{
+  color: #6fbaf8;
+}
+
+.b_up:hover {
+  color: #4076a1;
+}
+

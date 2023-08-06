@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Data Display</title>
+</head>
+<body>
+    <h1>JSON Data from Database</h1>
+    <pre id="json-data"></pre>
+    
+    <script>
+        // AJAX request to fetch JSON data from the Flask server
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://163.152.52.199:5000/analy', true);
+        var jsonData = JSON.parse(xhr.responseText);
+                console.log(jsonData);
+                // Use the jsonData in your JavaScript code as needed
+                document.getElementById('json-data').textContent = JSON.stringify(jsonData, null, 2);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var jsonData = JSON.parse(xhr.responseText);
+                console.log(jsonData);
+                // Use the jsonData in your JavaScript code as needed
+                document.getElementById('json-data').textContent = JSON.stringify(jsonData, null, 2);
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

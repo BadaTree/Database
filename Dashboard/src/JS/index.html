@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG</title>
+    <link rel="stylesheet" href="./main.css">
+
+</head>
+
+<body>
+    <script type="importmap">
+		{
+			"imports": {
+				"three": "./JS/three.module.js"
+			}
+		}
+	</script>
+    <script src="./data/JSnewHana.js"></script>
+    <script src="./JS/jquery-1.12.3.js" defer></script>
+    <script src="./jqueryScript.js" defer></script>
+
+
+    <script src="./main.js" type="module"></script>
+    <!-- 와이어 프레임 상단 메뉴바, 로고 + 이름, 계정버튼-->
+    <header>
+        <div class="wrap">
+            <!-- 네비게이션바 -->
+            <!-- <nav class="menu"> -->
+                <!-- 햄버거 메뉴 -->
+                <!-- <div class="menu_btn"> -->
+                    <!-- <a href="#" class="menu_link"> -->
+                        <!-- <img src="images/menu.png" alt="메뉴"> -->
+                    <!-- </a> -->
+                <!-- </div> -->
+                <!-- 메뉴 맵 -->
+                <!-- <div id="modal">
+                    <div class="modal_up">
+                        <div class="uptitle">LG</div>
+                        <div class="upbody">
+                            <li><a href="#">검색</a></li>
+                            <li><a href="#">길찾기</a></li>
+                            <li><a href="#">공공시설</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">설정</a></li>
+                        </div>
+                        <div class="modal_btn">X</div>
+                    </div>
+                </div>
+            </nav> -->
+            <!-- 로고, 이름 -->
+            <div class="logo">
+                <h1><a href="#" class="logoText">LG
+                    </a></h1>
+            </div>
+            <!-- 계정버튼 -->
+            <!-- <div class="user"> -->
+                <!-- <a href="#" class="user_link"> -->
+                    <!-- <img src="images/user-wh.png" alt="메뉴"> -->
+                <!-- </a> -->
+            <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="searchbar">
+            <select name="Goal" id="goal" onchange="handleOnChange(this)">
+                <option value="9999" selected="" disabled="" hidden="">목적지를 선택하세요</option>
+            </select>
+        </div> -->
+    </header>
+    <!-- 3D 영역, 배경 전체 -->
+    <canvas id="three-canvas">
+        <div class="threejs">
+            3D 영역
+        </div>
+    </canvas>
+    
+    <!-- 바텀역역 -->
+    <footer>
+        
+    </footer>
+    <!-- 버튼 -->
+    <div id=Lmonitor>좌표모니터</div>
+    <div id=Cmonitor>카메라모니터</div>
+
+    <div id=plusBtn class=button onclick="camPositionBtn('-20')">-</div>
+    <div id=minusBtn class=button onclick="camPositionBtn('+20')">+</div>
+    <div id=centerBtn class=button onclick="camPositionBtn('180')">Θ</div>
+    <div id=angleBtn class=button onclick="camPositionBtn('angle')">A</div>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <style>
+    html, body {
+        margin: 0;
+        width: 200%;
+        height: 200%;
+    }
+</style> -->
+
+
+</script>
+</body>
+
+</html>
