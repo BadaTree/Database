@@ -15,7 +15,7 @@ def place_dot(image_path, x, y):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template(r'C:\Users\SKH\Desktop\Database\Dashboard\src\data\HanaSquare_B1.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
