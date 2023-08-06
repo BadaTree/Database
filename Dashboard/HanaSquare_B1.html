@@ -49,6 +49,24 @@
     }
 </style>
 
+
+<button id="myButton">Click Me</button>
+<script>
+  // Define the function to be executed on button click
+  function handleClick() {
+    for (let i = 200; i < 313; i++) {
+        androidBridge_1(i+100, i-100, 'On Hand', 3);
+        androidBridge_1(i+50, i-150, 'On Hand', 2);
+        androidBridge_1(i+0, i-150, 'On Hand', 1);
+    }
+
+  }
+
+  // Attach the function to the button using an event listener
+  document.getElementById('myButton').addEventListener('click', handleClick);
+</script>
+
+
 <script type="text/javascript">
     var clicked_x = 0
     var clicked_y = 0
