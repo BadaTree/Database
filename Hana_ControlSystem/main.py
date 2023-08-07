@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, json , jsonify, render_template, request, redirect, url_for
 import mysql.connector
 from mysql.connector import Error
@@ -33,7 +35,7 @@ def renderHtml():
 
 # suwonstationmap DB의 map_info 테이블 데이터 조회 및 반환
 @app.route('/map')
-def slelctMap():
+def selectMap():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.map_info"
@@ -52,25 +54,26 @@ def slelctMap():
 
 # suwonstationmap DB의 roomarea_info 테이블 데이터 조회 및 반환
 @app.route('/room')
-def slelctRoom():
-    try:
-        cursor = connection.cursor()
-        query = "SELECT * FROM suwonstationmap.roomarea_info"
-        cursor.execute(query)
-        data = cursor.fetchall()
-        cursor.close()
-        # Serialize the data using json.dumps()
-        serialized_data = json.dumps(data)
-
-        return serialized_data, 200, {'Content-Type': 'application/json'}
-    except Exception as e:
-        print("error:", e)
-        return "Error occurred", 500, {'Content-Type': 'text/plain'}
+def selectRoom():
+    while True:
+        try:
+            cursor = connection.cursor()
+            query = "SELECT * FROM suwonstationmap.roomarea_info"
+            cursor.execute(query)
+            data = cursor.fetchall()
+            cursor.close()
+            # Serialize the data using json.dumps()
+            serialized_data = json.dumps(str(float(random.randint(1, 1000))))
+            time.sleep(5)
+            return serialized_data, 200, {'Content-Type': 'application/json'}
+        except Exception as e:
+            print("error:", e)
+            return "Error occurred", 500, {'Content-Type': 'text/plain'}
 
 
 # suwonstationmap DB의 floor_info 테이블 데이터 조회 및 반환
 @app.route('/floor')
-def slelctFloor():
+def selectFloor():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.floor_info"
@@ -89,7 +92,7 @@ def slelctFloor():
 
 # suwonstationmap DB의 background_info 테이블 데이터 조회 및 반환
 @app.route('/back')
-def slelctBack():
+def selectBack():
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM suwonstationmap.background_info"
