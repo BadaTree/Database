@@ -12,5 +12,7 @@
 
 > DataBase 
 
-- [기본 구조 설명](https://threejs.org/manual/#en/fundamentals)
-- [Three.js 강의](https://www.youtube.com/watch?v=_PqQLvFa_Vw&list=PLkbzizJk4Ae9hHI_YUD3fRv8xLfS3jGEW&index=1)
+- [쉬운 코드](https://youtu.be/aL0XXc1yGPs)
+- [이수안 컴퓨터 연구소](https://youtu.be/HmVAN1xq9KI)
+- [국민대 김남규 교수님](https://youtu.be/K4jiTvSIfB4)
+- [코딩애플](https://youtu.be/Y1FbowQRcmI)
